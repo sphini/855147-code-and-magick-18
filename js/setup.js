@@ -1,6 +1,10 @@
 'use strict';
 
-document.querySelector('.setup').classList.remove('hidden');
+
+
+document.querySelector('.setup-open').addEventListener('click', function() {
+ document.querySelector('.setup').classList.remove('hidden');
+});
 
 document.querySelector('.setup-similar').classList.remove('hidden');
 
