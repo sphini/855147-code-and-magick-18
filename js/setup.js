@@ -1,12 +1,38 @@
 'use strict';
 
+var setup = document.querySelector('.setup');
+var setupOpen = document.querySelector('.setup-open');
+var setupClose = document.querySelector('.setup-close');
 
+var openPopUp = function() {
+  setup.classList.remove('hidden');
 
-document.querySelector('.setup-open').addEventListener('click', function() {
- document.querySelector('.setup').classList.remove('hidden');
+  document.addEventListener('keydown', function(evt) {
+    if (evt.keyCode === 27) {
+      closePopUp();
+    }
+  });
+};
+
+var closePopUp = function() {
+  setup.classList.add('hidden');
+};
+
+setupOpen.addEventListener('click', function() {
+  openPopUp();
 });
 
-document.querySelector('.setup-similar').classList.remove('hidden');
+setupClose.addEventListener('click', function() {
+  closePopUp();
+});
+
+setupOpen.addEventListener('keydown', function(evt) {
+  if (evt.keyCode === 13) {
+    openPopUp();
+  }
+});
+
+
 
 var WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 var WIZARD_SURNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
