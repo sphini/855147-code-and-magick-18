@@ -39,21 +39,25 @@ var onPopupEscPress = function (evt) {
   }
 };
 
-setupOpen.addEventListener('click', openPopUp);
-
-setupOpen.addEventListener('keydown', function (evt) {
+var onEnterOpen = function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
     openPopUp();
   }
-});
+};
 
-setupClose.addEventListener('click', closePopUp);
-
-setupClose.addEventListener('keydown', function (evt) {
+var onEnterClose = function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
     closePopUp();
   }
-});
+};
+
+setupOpen.addEventListener('click', openPopUp);
+
+setupOpen.addEventListener('keydown', onEnterOpen);
+
+setupClose.addEventListener('click', closePopUp);
+
+setupClose.addEventListener('keydown', onEnterClose);
 
 wizardEyes.addEventListener('click', function () {
   currentColorEyes = randomizeElement(EYES_COLORS);
@@ -87,8 +91,8 @@ var wizardsCount = 4;
 for (var i = 0; i < wizardsCount; i++) {
   wizards.push({
     name: randomizeElement(WIZARD_NAMES) + ' ' + randomizeElement(WIZARD_SURNAMES),
-    coatColor: currentCoatColor,
-    eyesColor: currentColorEyes
+    coatColor: randomizeElement(COAT_COLORS),
+    eyesColor: randomizeElement(EYES_COLORS)
   });
 }
 
